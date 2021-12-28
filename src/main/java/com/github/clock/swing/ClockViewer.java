@@ -20,6 +20,7 @@ import java.util.Optional;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
+import com.github.clock.Args;
 import com.github.clock.Clock;
 import com.github.clock.DebugPrinter;
 import com.github.clock.Observers;
@@ -28,11 +29,13 @@ public class ClockViewer extends JComponent{
     private static final long serialVersionUID = 851223340594030326L;
 
     private Clock clock;
+    private Args args;
     private Optional<Image> background;
     private DebugPrinter printer;
     private Hand[] hands;
 
-    public ClockViewer(Clock clock, Observers observers, DebugPrinter printer){
+    public ClockViewer(Clock clock, Args args, Observers observers, DebugPrinter printer){
+        this.args = args;
         observers.add(c -> repaint());
         this.clock = clock;
         clock.start();
@@ -48,9 +51,9 @@ public class ClockViewer extends JComponent{
 
     private void initializeHands() {
         hands = new Hand[] {
-            new Hand(1, Color.BLACK, 0.8),
-            new Hand(2, Color.RED, 0.7),
-            new Hand(4, Color.BLUE, 0.6)
+            new Hand(1, Color.BLACK, 0.8), // 秒針
+            new Hand(2, Color.decode(args.getLongHandColor()), 0.7), // 長針
+            new Hand(4, Color.BLUE, 0.6)   // 短針
         };
     }
 

@@ -13,7 +13,7 @@ public class Main{
     private void showClock(Args args) {
         Observers observers = new Observers();
         Clock clock = new Clock(args.getZoneId(), observers);
-        ClockViewer viewer = new ClockViewer(clock, observers, DebugPrinter.of(args.isDebugMode()));
+        ClockViewer viewer = new ClockViewer(clock, args, observers, DebugPrinter.of(args.isDebugMode()));
         viewer.showClock();
     }
 

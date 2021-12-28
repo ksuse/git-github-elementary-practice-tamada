@@ -1,0 +1,14 @@
+{
+  "tests": [
+    {
+      "name": "maven packaging",
+      "setup": "",
+      "run": "mvn package",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": null
+    }
+  ]
+}
